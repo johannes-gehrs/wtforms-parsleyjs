@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WTForms-Parsley Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% block styles %}
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
+              rel="stylesheet">
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+    {% endblock styles %}
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                    data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href={{ url_for('parsley_testform') }}>WTForms-Parsley
+                Sample</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}
+
+    {% endblock content %}
+</div>
+<!-- /container -->
+
+{% block scripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/parsley/parsley.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/parsley/parsley.extend.js') }}"></script>
+    <script>$('form').parsley({ successClass: 'success', errorClass: 'error',
+        errors: {
+            classHandler: function (element) {
+                return $(element).parent().parent();
+            },
+            container: function (element) {
+                var $container = element.parent().find(".help-inline");
+                if ($container.length === 0) {
+                    $container = $("<span class='help-inline'></span>").insertAfter(element);
+                }
+                return $container;
+            }
+        }});
+    </script>
+{% endblock scripts %}
+</body>
+</html>

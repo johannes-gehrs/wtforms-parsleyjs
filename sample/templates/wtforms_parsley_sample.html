@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p class="lead">Check out the form validation!</p>
+    {% from "_formhelpers.html" import render_field, render_checkbox %}
+    <form method=post action="{{ url_for('parsley_testform') }}">
+        <fieldset>
+            {{ render_field(form.email) }}
+            {{ render_field(form.first_value) }}
+            {{ render_field(form.second_value) }}
+            {{ render_field(form.ip_address) }}
+            {{ render_field(form.string_length) }}
+            {{ render_field(form.number_range) }}
+            {{ render_field(form.required_text) }}
+            {{ render_field(form.required_select) }}
+            {{ render_checkbox(form.required_checkbox) }}
+            {{ render_field(form.regexp) }}
+            {{ render_field(form.url) }}
+            {{ render_field(form.anyof) }}
+            <p><input type=submit value=Submit>
+        </fieldset>
+    </form>
+{% endblock content %}
