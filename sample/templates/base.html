@@ -45,8 +45,8 @@
 
 {% block scripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='scripts/parsley/parsley.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/parsley/parsley.extend.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/parsleyjs/parsley.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/parsleyjs/parsley.extend.js') }}"></script>
     <script>$('form').parsley({ successClass: 'success', errorClass: 'error',
         errors: {
             classHandler: function (element) {

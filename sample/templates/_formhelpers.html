@@ -1,12 +1,3 @@
-{% macro render_checkbox(field) %}
-    <div class="control-group {% if field.errors %} error {% endif %}">
-        <div class="controls">
-            <label class="checkbox">{{ field(**kwargs)|safe }} {{ field.label }}</label>
-            {{ render_errors(field) }}
-        </div>
-    </div>
-{% endmacro %}
-
 {% macro render_field(field) %}
     <label class="control-label" for="{{ field.name }}">{{ field.label }}</label>
     <div class="control-group {% if field.errors %} error {% endif %}">
@@ -18,13 +9,13 @@
 {% endmacro %}
 
 {% macro render_errors(field) %}
-    {% if field.errors %}
-        <span class="help-inline">
+    <span class="help-inline">
+            {% if field.errors %}
                 <ul>
                     {% for error in field.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
-                </span>
-    {% endif %}
+            {% endif %}
+    </span>
 {% endmacro %}
