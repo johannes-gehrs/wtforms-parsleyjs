@@ -1,6 +1,8 @@
+__author__ = 'Johannes Gehrs (jgehrs@gmail.com)'
+
 from flask import Flask, render_template, redirect, url_for, request, flash
 from wtforms import Form, validators
-from wtforms_parsleyjs import IntegerField, BooleanField, SelectField, TextField
+from wtformsparsleyjs.core import IntegerField, BooleanField, SelectField, TextField
 
 app = Flask(__name__)
 
@@ -56,7 +58,3 @@ class ParsleyTestForm(Form):
         validators.AnyOf(message='Sorry, you can only choose from car, bike and plane',
                          values=['car', 'bike', 'plane'])
         ], default='car')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

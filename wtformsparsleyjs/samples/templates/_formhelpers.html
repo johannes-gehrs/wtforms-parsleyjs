@@ -11,7 +11,7 @@
 {% macro render_errors(field) %}
     <span class="help-inline">
             {% if field.errors %}
-                <ul>
+                <ul class="unstyled">
                     {% for error in field.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}

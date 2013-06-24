@@ -56,9 +56,10 @@
                 var $container = element.parent().find(".help-inline");
                 if ($container.length === 0) {
                     $container = $("<span class='help-inline'></span>").insertAfter(element);
-                }
+                };
                 return $container;
-            }
+            },
+            errorsWrapper: '<ul class="unstyled"></ul>'
         }});
     </script>
 {% endblock scripts %}
