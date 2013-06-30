@@ -1,6 +1,8 @@
 __author__ = 'Johannes Gehrs (jgehrs@gmail.com)'
 
-import re, copy
+import re
+import copy
+
 from wtforms.validators import Length, NumberRange, Email, EqualTo, IPAddress, \
     Required, Regexp, URL, AnyOf
 from wtforms import TextField
@@ -10,6 +12,7 @@ from wtforms.fields import TextField as _TextField, BooleanField as _BooleanFiel
     DecimalField as _DecimalField, IntegerField as _IntegerField, \
     FloatField as _FloatField, PasswordField as _PasswordField, \
     SelectField as _SelectField
+
 
 def parsley_kwargs(field, kwargs):
     """
@@ -48,7 +51,6 @@ def parsley_kwargs(field, kwargs):
         if isinstance(vali, AnyOf):
             _anyof_kwargs(new_kwargs, vali)
 
-
         if not 'data_trigger' in new_kwargs:
             _trigger_kwargs(new_kwargs)
         if not 'data-error-message' in new_kwargs and vali.message is not None:
@@ -58,16 +60,16 @@ def parsley_kwargs(field, kwargs):
 
 
 def _email_kwargs(kwargs):
-    kwargs[u'data-type']=u'email'
+    kwargs[u'data-type'] = u'email'
 
 
 def _equal_to_kwargs(kwargs, vali):
-    kwargs[u'data-equalto']=u'#' + vali.fieldname
+    kwargs[u'data-equalto'] = u'#' + vali.fieldname
 
 
 def _ip_address_kwargs(kwargs):
     # Regexp from http://stackoverflow.com/a/4460645
-    kwargs[u'data-regexp']=\
+    kwargs[u'data-regexp'] =\
         r'^\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).' \
         r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.' \
         r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.' \
@@ -92,7 +94,8 @@ def _regexp_kwargs(kwargs, vali):
     RegexObject = type(re.compile(''))
     if isinstance(vali.regex, RegexObject):
         regex_string = vali.regex.pattern
-    else: regex_string = vali.regex
+    else:
+        regex_string = vali.regex
     kwargs[u'data-regexp'] = regex_string
 
 
@@ -103,12 +106,15 @@ def _url_kwargs(kwargs):
 def _string_seq_delimiter(vali, kwargs):
     # We normally use a comma as the delimiter - looks clean and it's parsley's default.
     # If the strings for which we check contain a comma, we cannot use it as a delimiter.
-    delimiter = u','
+    default_delimiter = u','
+    fallback_delimiter = u';;;'
+    delimiter = default_delimiter
     for value in vali.values:
         if value.find(',') != -1:
-            delimiter = u';;;'
+            delimiter = fallback_delimiter
             break
-    if delimiter != u',': kwargs[u'data-inlist-delimiter'] = delimiter
+    if delimiter != default_delimiter:
+        kwargs[u'data-inlist-delimiter'] = delimiter
     return delimiter
 
 
@@ -118,7 +124,7 @@ def _anyof_kwargs(kwargs, vali):
 
 
 def _trigger_kwargs(kwargs, trigger=u'change'):
-    kwargs[u'data-trigger']=trigger
+    kwargs[u'data-trigger'] = trigger
 
 
 def _message_kwargs(kwargs, message):
@@ -151,34 +157,34 @@ class Select(_Select):
 
 class TextField(_TextField):
     def __init__(self, *args, **kwargs):
-        super(TextField, self).__init__(widget = TextInput(), *args, **kwargs)
+        super(TextField, self).__init__(widget=TextInput(), *args, **kwargs)
 
 
 class IntegerField(_IntegerField):
     def __init__(self, *args, **kwargs):
-        super(IntegerField, self).__init__(widget = TextInput(), *args, **kwargs)
+        super(IntegerField, self).__init__(widget=TextInput(), *args, **kwargs)
 
 
 class BooleanField(_BooleanField):
     def __init__(self, *args, **kwargs):
-        super(BooleanField, self).__init__(widget = CheckboxInput(), *args, **kwargs)
+        super(BooleanField, self).__init__(widget=CheckboxInput(), *args, **kwargs)
 
 
 class DecimalField(_DecimalField):
     def __init__(self, *args, **kwargs):
-        super(DecimalField, self).__init__(widget = TextInput(), *args, **kwargs)
+        super(DecimalField, self).__init__(widget=TextInput(), *args, **kwargs)
 
 
 class FloatField(_FloatField):
     def __init__(self, *args, **kwargs):
-        super(FloatField, self).__init__(widget = TextInput(), *args, **kwargs)
+        super(FloatField, self).__init__(widget=TextInput(), *args, **kwargs)
 
 
 class PasswordField(_PasswordField):
     def __init__(self, *args, **kwargs):
-        super(PasswordField, self).__init__(widget = PasswordInput(), *args, **kwargs)
+        super(PasswordField, self).__init__(widget=PasswordInput(), *args, **kwargs)
 
 
 class SelectField(_SelectField):
     def __init__(self, *args, **kwargs):
-        super(SelectField, self).__init__(widget = Select(), *args, **kwargs)
+        super(SelectField, self).__init__(widget=Select(), *args, **kwargs)

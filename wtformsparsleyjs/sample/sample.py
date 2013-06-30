@@ -2,7 +2,7 @@ __author__ = 'Johannes Gehrs (jgehrs@gmail.com)'
 
 from flask import Flask, render_template, redirect, url_for, request, flash
 from wtforms import Form, validators
-from wtformsparsleyjs.core import IntegerField, BooleanField, SelectField, TextField
+from wtformsparsleyjs import IntegerField, BooleanField, SelectField, TextField
 
 app = Flask(__name__)
 
@@ -42,11 +42,11 @@ class ParsleyTestForm(Form):
         validators.Required(
             message='Sorry, you have to make a choice.')
         ], choices=[('', 'Please select an option'), ('cpp', 'C++'), ('py', 'Python'),
-                ('text', 'Plain Text')])
+                ('text', 'Plain Text')
+        ], default='py')
     required_checkbox = BooleanField('Required Checkbox', [
         validators.Required(message='Sorry, you need to accept this.')
-        ])
-
+        ], default=True)
     regexp = TextField('Regex-Matched Hex Color-Code', [
         validators.Regexp(message='Not a proper color code, sorry.',
                           regex=r'^#[A-Fa-f0-9]{6}$')
