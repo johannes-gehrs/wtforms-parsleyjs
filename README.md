@@ -65,7 +65,7 @@ Of course ParsleyJS and WTForms are required. ParsleyJS in turn requires jQuery.
 
 The `AnyOf` validator requires parsleys extra validators which are distributed in a seperate file.
 
-The sample uses the [Flask web framework](http://flask.pocoo.org/docs/) and [Twitter Bootstrap](http://twitter.github.io/bootstrap/).
+The sample uses the [Flask web framework](http://flask.pocoo.org/docs/) and [Twitter Bootstrap](http://twitter.github.io/bootstrap/). Because the sample should run out of the box, it's included as a git submodule.
 
 ## What else?
 
