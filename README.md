@@ -12,7 +12,7 @@ This library will generate these tags from your WTForms validators.
 
 ## Sample
 
-Check out the sample here. You can also run the sample yourself by calling `run.py` if you have flask installed.
+[Check out the sample here](http://vast-plains-1931.herokuapp.com/parsley_testform). You can also run the sample yourself by calling `run.py` if you have flask installed.
 
 ## What is supported?
 
@@ -45,7 +45,7 @@ The easiest way is to simply use the supplied field classes in your form definit
 
 If you have your own Field classes, you can use the provided input widgets and pass them into your classes by overwriting the constructor of the underlying default WTForms base field class.
 
-You can also directly use the `ParsleyInputMixin` on your own widget classes or you can directly call the function `parsley_kwargs` which will generate the needed tags for your field (which you can then pass in as kwargs to the constructor of the input widget).
+You can also directly use the `ParsleyInputMixin` on your own widget classes or you can directly call the function `parsley_kwargs` which will generate the needed tags for your field (which you can then for example pass in as kwargs to the constructor of the input widget).
 
 ## Limitations
 
