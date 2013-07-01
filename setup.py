@@ -1,6 +1,4 @@
 """
-# WTForms-ParsleyJS
-
 This is a small library which you can hook into your WTForms form classes in order to
 enable client side validation.
 
@@ -21,7 +19,7 @@ from setuptools import setup
 
 setup(
     name='WTForms-ParsleyJS',
-    version='0.1',
+    version='0.1.1',
     url='https://github.com/johannes-gehrs/wtforms-parsleyjs',
     license='MIT',
     author='Johannes Gehrs',
