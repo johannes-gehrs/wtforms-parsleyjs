@@ -12,7 +12,13 @@ This library will generate these tags from your WTForms validators.
 
 ## Sample
 
-[Check out the sample here](http://vast-plains-1931.herokuapp.com/parsley_testform). You can also run the sample yourself by calling `run.py` if you have flask installed.
+[Check out the sample here](http://vast-plains-1931.herokuapp.com/parsley_testform). You can also run the sample yourself by calling `run_sample.py` if you have flask installed.
+
+## Installation
+
+You can install from pypi using 
+
+`pip install wtforms-parsleyjs`
 
 ## What is supported?
 
@@ -25,9 +31,9 @@ The following WTForms validators are supported:
 * Required field
 * Regexp (see limitations)
 * URL
-* AnyOf
+* `AnyOf`
 
-The NoneOf validator is not supported because this functionality is not supported by ParsleyJS.
+The `NoneOf` validator is not supported because this functionality is not supported by ParsleyJS.
 
 The following WTForms widgets are supported:
 
@@ -53,11 +59,11 @@ Note that the regex validation relies on the regex pattern being compatible with
 
 Notably the ECMA script default behaviour matches the behaviour of [Python's search, not match](http://docs.python.org/2/library/re.html#search-vs-match).
 
-It's possible to simply supply your own `data-regexp` keyword to the field to explicitly provide the ECMA script regex.
-
-See [the flask documentation on this](http://flask.pocoo.org/docs/patterns/wtforms/#forms-in-templates). If you do this the library will not touch your custom regex.
+It's possible to simply supply your own `data-regexp` keyword to the field to explicitly provide the ECMA script regex. See [the flask documentation on this](http://flask.pocoo.org/docs/patterns/wtforms/#forms-in-templates). If you do this the library will not touch your custom regex.
 
 Note that the WTForms URL vaidator probably is a bit more liberal than the parsley one. Do check if the behaviour suits your needs.
+
+WTForms-ParsleyJS has been developed and run solely on Python 2.7. - but it may work with other versions.
 
 ## Dependencies
 
@@ -65,7 +71,8 @@ Of course ParsleyJS and WTForms are required. ParsleyJS in turn requires jQuery.
 
 The `AnyOf` validator requires parsleys extra validators which are distributed in a seperate file.
 
-The sample uses the [Flask web framework](http://flask.pocoo.org/docs/) and [Twitter Bootstrap](http://twitter.github.io/bootstrap/). Because the sample should run out of the box, ParsleyJS is included as a git submodule.
+The sample uses the [Flask web framework](http://flask.pocoo.org/docs/) and [Twitter Bootstrap](http://twitter.github.io/bootstrap/). Because the sample should run out of the box on Heroku, ParsleyJS is included as a git submodule.
+
 
 ## What else?
 
