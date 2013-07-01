@@ -63,7 +63,7 @@ It's possible to simply supply your own `data-regexp` keyword to the field to ex
 
 Note that the WTForms URL vaidator probably is a bit more liberal than the parsley one. Do check if the behaviour suits your needs.
 
-WTForms-ParsleyJS has been developed and run solely on Python 2.7. - but it may work with other versions.
+WTForms-ParsleyJS has been developed and run solely on Python 2.7 - but it may work with other versions.
 
 ## Dependencies
 
