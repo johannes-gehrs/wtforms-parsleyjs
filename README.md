@@ -6,9 +6,11 @@ This is a small library which you can hook into your WTForms form classes in ord
 
 [WTForms](http://wtforms.simplecodes.com/docs/1.0.4/) allows you to validate your forms on the server side. Ideally, we could reuse these validators on the client side with JavaScript without writing any extra code. This will allow for more direct user feedback in our forms.
 
-This library uses [ParsleyJS](http://parsleyjs.org/documentation.html) for this task. ParsleyJS is a popular client side JavaScript validation library. It is configured using specific HTML markup in the forms.
+This library uses [ParsleyJS](http://parsleyjs.org/documentation.html) for this task. ParsleyJS is a popular client side JavaScript validation library. It is configured using specific HTML markup in the forms, for example:
 
-This library will generate these tags from your WTForms validators.
+`<input data-error-message="Length should be between 5 and 10 characters." data-rangelength="[5,10]" data-trigger="change" id="string_length" name="string_length" type="text" value="Hello!" class="parsley-validated">`
+
+This library will generate the necesssary HTML attributes from your WTForms validators.
 
 ## Sample
 
@@ -45,13 +47,13 @@ Radio Buttons are not supported.
 
 ## How to use it?
 
-The easiest way is to simply use the supplied field classes in your form definitions. These subclass the default WTForms field classes and should behave identically to them apart from the extra tags. So instead of importing from wtforms you say for example:
+The easiest way is to simply use the supplied field classes in your form definitions. These subclass the default WTForms field classes and should behave identically to them apart from the extra HTML attributes. So instead of importing from wtforms you say for example:
 
 `from wtformsparsleyjs import IntegerField`
 
 If you have your own Field classes, you can use the provided input widgets and pass them into your classes by overwriting the constructor of the underlying default WTForms base field class.
 
-You can also directly use the `ParsleyInputMixin` on your own widget classes or you can directly call the function `parsley_kwargs` which will generate the needed tags for your field (which you can then for example pass in as kwargs to the constructor of the input widget).
+You can also directly use the `ParsleyInputMixin` on your own widget classes or you can directly call the function `parsley_kwargs` which will generate the needed attributes for your field (which you can then for example pass in as kwargs to the constructor of the input widget).
 
 ## Limitations
 
