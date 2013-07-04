@@ -6,9 +6,7 @@ This is a small library which you can hook into your WTForms form classes in ord
 
 [WTForms](http://wtforms.simplecodes.com/docs/1.0.4/) allows you to validate your forms on the server side. Ideally, we could reuse these validators on the client side with JavaScript without writing any extra code. This will allow for more direct user feedback in our forms.
 
-This library uses [ParsleyJS](http://parsleyjs.org/documentation.html) for this task. ParsleyJS is a popular client side JavaScript validation library. It is configured using specific HTML markup in the forms, for example:
-
-`<input data-error-message="Length should be between 5 and 10 characters." data-rangelength="[5,10]" data-trigger="change" id="string_length" name="string_length" type="text" value="Hello!" class="parsley-validated">`
+This library uses [ParsleyJS](http://parsleyjs.org/documentation.html) for this task. ParsleyJS is a popular client side JavaScript validation library. It is configured using specific HTML markup in the forms.
 
 This library will generate the necesssary HTML attributes from your WTForms validators.
 
