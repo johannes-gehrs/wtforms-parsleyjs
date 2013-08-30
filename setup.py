@@ -9,7 +9,7 @@ will allow for more direct user feedback in our forms.
 This library uses ParsleyJS for this task. ParsleyJS is a popular client side
 JavaScript validation library. It is configured using specific HTML markup in the forms.
 
-This library will generate these tags from your WTForms validators.
+This library will generate these attributes from your WTForms validators.
 
 For more information consult the README.md in the Github repository at
 https://github.com/johannes-gehrs/wtforms-parsleyjs
@@ -24,7 +24,7 @@ setup(
     license='MIT',
     author='Johannes Gehrs',
     author_email='jgehrs@gmail.com',
-    description='Generate client side, parsley.js validation tags automatically '
+    description='Generate client side, parsley.js validation attributes automatically '
                 'from WTForms server side validators.',
     long_description=__doc__,
     py_modules = ['run_sample'],
