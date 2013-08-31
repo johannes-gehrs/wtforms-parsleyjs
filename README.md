@@ -16,7 +16,7 @@ This library will generate the necesssary HTML attributes from your WTForms vali
 
 ## Installation
 
-You can install from pypi using 
+You can install from [pypi](https://pypi.python.org/pypi/WTForms-ParsleyJS) using 
 
 `pip install wtforms-parsleyjs`
 
