@@ -1,3 +1,3 @@
 __author__ = 'johannes'
 
-from core import *
+from .core import *
