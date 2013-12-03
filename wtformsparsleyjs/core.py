@@ -76,22 +76,12 @@ def _ip_address_kwargs(kwargs):
         r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b$'
 
 
-def _range_kwargs(kwargs, vali, suffix=''):
-    if vali.min > 0 and vali.max > 0:
-        kwargs[u'data-range' + suffix] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
-    else:
-        if vali.min > 0:
-            kwargs[u'data-min' + suffix] = str(vali.min)
-        if vali.max > 0:
-            kwargs[u'data-max' + suffix] = str(vali.max)
-
-
 def _length_kwargs(kwargs, vali):
-    _range_kwargs(kwargs, vali, suffix='length')
+    kwargs[u'data-rangelength'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
 
 
 def _number_range_kwargs(kwargs, vali):
-    _range_kwargs(kwargs, vali)
+    kwargs[u'data-range'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
 
 
 def _required_kwargs(kwargs):
