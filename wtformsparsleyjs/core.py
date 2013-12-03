@@ -77,7 +77,15 @@ def _ip_address_kwargs(kwargs):
 
 
 def _length_kwargs(kwargs, vali):
-    kwargs[u'data-rangelength'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
+    default_number = -1
+
+    if vali.max != default_number and vali.min != default_number:
+        kwargs[u'data-rangelength'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
+    else:
+        if vali.max == default_number:
+            kwargs[u'data-minlength'] = str(vali.min)
+        if vali.min == default_number:
+            kwargs[u'data-maxlength'] = str(vali.max)
 
 
 def _number_range_kwargs(kwargs, vali):
