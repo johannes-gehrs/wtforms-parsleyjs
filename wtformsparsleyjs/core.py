@@ -18,7 +18,7 @@ def parsley_kwargs(field, kwargs):
     """
     Return new *kwargs* for *widget*.
 
-    Generate *kwargs* from the validators present for the field.
+    Generate *kwargs* from the validators present for the widget.
 
     Note that the regex validation relies on the regex pattern being compatible with
     both ECMA script and Python. The regex is not converted in any way.
