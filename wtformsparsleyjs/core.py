@@ -22,7 +22,7 @@ def parsley_kwargs(field, kwargs):
 
     Note that the regex validation relies on the regex pattern being compatible with
     both ECMA script and Python. The regex is not converted in any way.
-    It's possible to simply supply your own "data-regexp" keyword to the field
+    It's possible to simply supply your own "parsley-regexp" keyword to the field
     to explicitly provide the ECMA script regex.
     See http://flask.pocoo.org/docs/patterns/wtforms/#forms-in-templates
 
@@ -53,23 +53,23 @@ def parsley_kwargs(field, kwargs):
 
         if not 'data_trigger' in new_kwargs:
             _trigger_kwargs(new_kwargs)
-        if not 'data-error-message' in new_kwargs and vali.message is not None:
+        if not 'parsley-error-message' in new_kwargs and vali.message is not None:
             _message_kwargs(new_kwargs, message=vali.message)
 
     return new_kwargs
 
 
 def _email_kwargs(kwargs):
-    kwargs[u'data-type'] = u'email'
+    kwargs[u'parsley-type'] = u'email'
 
 
 def _equal_to_kwargs(kwargs, vali):
-    kwargs[u'data-equalto'] = u'#' + vali.fieldname
+    kwargs[u'parsley-equalto'] = u'#' + vali.fieldname
 
 
 def _ip_address_kwargs(kwargs):
     # Regexp from http://stackoverflow.com/a/4460645
-    kwargs[u'data-regexp'] =\
+    kwargs[u'parsley-regexp'] =\
         r'^\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.' \
         r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.' \
         r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.' \
@@ -80,20 +80,20 @@ def _length_kwargs(kwargs, vali):
     default_number = -1
 
     if vali.max != default_number and vali.min != default_number:
-        kwargs[u'data-rangelength'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
+        kwargs[u'parsley-rangelength'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
     else:
         if vali.max == default_number:
-            kwargs[u'data-minlength'] = str(vali.min)
+            kwargs[u'parsley-minlength'] = str(vali.min)
         if vali.min == default_number:
-            kwargs[u'data-maxlength'] = str(vali.max)
+            kwargs[u'parsley-maxlength'] = str(vali.max)
 
 
 def _number_range_kwargs(kwargs, vali):
-    kwargs[u'data-range'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
+    kwargs[u'parsley-range'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
 
 
 def _required_kwargs(kwargs):
-    kwargs[u'data-required'] = u'true'
+    kwargs[u'parsley-required'] = u'true'
 
 
 def _regexp_kwargs(kwargs, vali):
@@ -104,11 +104,11 @@ def _regexp_kwargs(kwargs, vali):
         regex_string = vali.regex.pattern
     else:
         regex_string = vali.regex
-    kwargs[u'data-regexp'] = regex_string
+    kwargs[u'parsley-regexp'] = regex_string
 
 
 def _url_kwargs(kwargs):
-    kwargs[u'data-type'] = u'url'
+    kwargs[u'parsley-type'] = u'url'
 
 
 def _string_seq_delimiter(vali, kwargs):
@@ -122,21 +122,21 @@ def _string_seq_delimiter(vali, kwargs):
             delimiter = fallback_delimiter
             break
     if delimiter != default_delimiter:
-        kwargs[u'data-inlist-delimiter'] = delimiter
+        kwargs[u'parsley-inlist-delimiter'] = delimiter
     return delimiter
 
 
 def _anyof_kwargs(kwargs, vali):
     delimiter = _string_seq_delimiter(vali, kwargs)
-    kwargs[u'data-inlist'] = delimiter.join(vali.values)
+    kwargs[u'parsley-inlist'] = delimiter.join(vali.values)
 
 
 def _trigger_kwargs(kwargs, trigger=u'change'):
-    kwargs[u'data-trigger'] = trigger
+    kwargs[u'parsley-trigger'] = trigger
 
 
 def _message_kwargs(kwargs, message):
-    kwargs[u'data-error-message'] = message
+    kwargs[u'parsley-error-message'] = message
 
 
 class ParsleyInputMixin(Input):
