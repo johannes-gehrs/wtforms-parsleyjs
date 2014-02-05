@@ -1,3 +1,3 @@
-__author__ = 'johannes'
+__author__ = 'synthsym'
 
 from .core import *
