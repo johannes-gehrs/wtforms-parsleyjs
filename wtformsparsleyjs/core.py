@@ -4,11 +4,11 @@ import re
 import copy
 
 from wtforms.validators import Length, NumberRange, Email, EqualTo, IPAddress, \
-    Required, Regexp, URL, AnyOf
-from wtforms import TextField
+    InputRequired, Regexp, URL, AnyOf
+from wtforms import StringField
 from wtforms.widgets import TextInput as _TextInput, PasswordInput as _PasswordInput, \
     CheckboxInput as _CheckboxInput, Select as _Select, Input
-from wtforms.fields import TextField as _TextField, BooleanField as _BooleanField, \
+from wtforms.fields import StringField as _StringField, BooleanField as _BooleanField, \
     DecimalField as _DecimalField, IntegerField as _IntegerField, \
     FloatField as _FloatField, PasswordField as _PasswordField, \
     SelectField as _SelectField
@@ -41,8 +41,8 @@ def parsley_kwargs(field, kwargs):
             _length_kwargs(new_kwargs, vali)
         if isinstance(vali, NumberRange):
             _number_range_kwargs(new_kwargs, vali)
-        if isinstance(vali, Required):
-            _required_kwargs(new_kwargs)
+        if isinstance(vali, InputRequired):
+            _input_required_kwargs(new_kwargs)
             _trigger_kwargs(new_kwargs, u'key')
         if isinstance(vali, Regexp) and not 'data_regexp' in new_kwargs:
             _regexp_kwargs(new_kwargs, vali)
@@ -92,7 +92,7 @@ def _number_range_kwargs(kwargs, vali):
     kwargs[u'parsley-range'] = u'[' + str(vali.min) + u',' + str(vali.max) + u']'
 
 
-def _required_kwargs(kwargs):
+def _input_required_kwargs(kwargs):
     kwargs[u'parsley-required'] = u'true'
 
 
@@ -163,9 +163,9 @@ class Select(_Select):
         return super(Select, self).__call__(field, **kwargs)
 
 
-class TextField(_TextField):
+class StringField(_StringField):
     def __init__(self, *args, **kwargs):
-        super(TextField, self).__init__(widget=TextInput(), *args, **kwargs)
+        super(StringField, self).__init__(widget=TextInput(), *args, **kwargs)
 
 
 class IntegerField(_IntegerField):
