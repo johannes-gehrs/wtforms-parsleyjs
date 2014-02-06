@@ -31,7 +31,7 @@ setup(
     packages=['wtformsparsleyjs', 'wtformsparsleyjs.sample'],
     platforms='any',
     install_requires=[
-        'WTForms>=1.0.4'
+        'WTForms>=1.0.5'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
