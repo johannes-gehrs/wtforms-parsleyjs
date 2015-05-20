@@ -1,3 +1,5 @@
+**This library is currently unaintained and not compatible with recent versions of Parsley JS. The author recommends that you use this [Fork](https://github.com/fuhrysteve/wtforms-parsleyjs) as people appear to have had success in using it.**
+
 # WTForms-ParsleyJS
 
 ## What is this?
@@ -13,12 +15,6 @@ This library will generate the necesssary HTML attributes from your WTForms vali
 ## Sample
 
 [Check out the sample here](http://vast-plains-1931.herokuapp.com/parsley_testform). You can also run the sample yourself by calling `run_sample.py` if you have flask installed.
-
-## Installation
-
-You can install from [pypi](https://pypi.python.org/pypi/WTForms-ParsleyJS) using 
-
-`pip install wtforms-parsleyjs`
 
 ## What is supported?
 
