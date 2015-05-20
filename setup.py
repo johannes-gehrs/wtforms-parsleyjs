@@ -1,4 +1,6 @@
 """
+(unmaintained - for active Fork see https://github.com/fuhrysteve/wtforms-parsleyjs)
+
 This is a small library which you can hook into your WTForms form classes in order to
 enable client side validation.
 
